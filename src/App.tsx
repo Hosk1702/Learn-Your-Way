@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PublicLayout from './components/layout/PublicLayout';
 import LandingPage from './features/landing/LandingPage';
 import LoginPage from './features/auth/LoginPage';
-// import RegisterPage from './features/auth/RegisterPage';
+import RegisterPage from './features/auth/RegisterPage';
 
 function App() {
   return (
@@ -16,8 +16,8 @@ function App() {
 
         {/* Rutas de Autenticación (Pantalla completa, sin Header/Footer)*/}
         <Route path="/login" element={<LoginPage />} />
-        {/* <Route path="/register" element={<RegisterPage />} /> 
-         */}
+        <Route path="/register" element={<RegisterPage />} /> 
+        
       </Routes>
     </Router>
   );
