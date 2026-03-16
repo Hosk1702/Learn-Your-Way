@@ -3,6 +3,7 @@ import PublicLayout from './components/layout/PublicLayout';
 import LandingPage from './features/landing/LandingPage';
 import LoginPage from './features/auth/LoginPage';
 import RegisterPage from './features/auth/RegisterPage';
+import ForgotPasswordPage from './features/auth/ForgotPasswordPage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         {/* Rutas de Autenticación (Pantalla completa, sin Header/Footer)*/}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} /> 
+        <Route path='/forgot-password' element={<ForgotPasswordPage />} />
         
       </Routes>
     </Router>
