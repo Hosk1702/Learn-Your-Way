@@ -1,4 +1,5 @@
-import { Outlet, Link, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { Outlet, Link, useLocation, useNavigate} from 'react-router-dom';
 import { 
   LayoutDashboard, 
   Compass, 
@@ -14,6 +15,15 @@ export default function DashboardLayout() {
   // useLocation nos sirve para saber en qué URL estamos y "pintar" el botón activo en el menú
   const location = useLocation();
 
+  const [showModalLogOut, setShowModalLogOut] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    setShowModalLogOut(false);
+
+    navigate('/')
+  }
   return (
     <div className="flex h-screen bg-slate-50 overflow-hidden font-sans">
       
@@ -21,7 +31,7 @@ export default function DashboardLayout() {
         
         <div>
           <div className="h-20 flex items-center px-8 border-b border-slate-100">
-            <Link to="/" className="flex items-center gap-2 text-indigo-600 font-black text-xl">
+            <Link to="/dashboard" className="flex items-center gap-2 text-indigo-600 font-black text-xl">
               <BookOpen className="w-6 h-6" />
               LearnYourWay
             </Link>
@@ -30,8 +40,7 @@ export default function DashboardLayout() {
           <nav className="p-4 space-y-2">
             <NavItem to="/dashboard" icon={<LayoutDashboard />} label="Mi Aprendizaje" isActive={location.pathname === '/dashboard'} />
             <NavItem to="/catalog" icon={<Compass />} label="Explorar Catálogo" isActive={location.pathname === '/catalog'} />
-            {/* <NavItem to="/classroom" icon={<Video />} label="Aula Virtual" isActive={location.pathname === '/classroom'} /> */}
-          </nav>
+             </nav>
         </div>
 
         <div className="p-4 border-t border-slate-100">
@@ -44,7 +53,9 @@ export default function DashboardLayout() {
               <p className="text-xs text-slate-500 truncate">Estudiante Pro</p>
             </div>
           </div>
-          <button className="flex items-center gap-3 px-4 py-2.5 w-full text-slate-500 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-colors font-semibold text-sm">
+          <button 
+            onClick={() => setShowModalLogOut(true)}
+            className="flex items-center gap-3 px-4 py-2.5 w-full text-slate-500 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-colors font-semibold text-sm">
             <LogOut className="w-5 h-5" />
             Cerrar Sesión
           </button>
@@ -83,6 +94,43 @@ export default function DashboardLayout() {
         </main>
         
       </div>
+      {showModalLogOut && (
+        // fixed inset-0 hace que esta capa negra cubra TODA la pantalla por encima de todo (z-50)
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-in fade-in duration-200">
+          
+          {/* La tarjeta blanca del modal */}
+          <div className="bg-white rounded-3xl p-6 w-full max-w-sm shadow-2xl border border-slate-100 transform transition-all">
+            
+            <div className="w-12 h-12 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center mb-4">
+              <LogOut className="w-6 h-6 ml-1" />
+            </div>
+            
+            <h3 className="text-xl font-black text-slate-900 mb-2">¿Cerrar sesión?</h3>
+            <p className="text-slate-500 text-sm mb-8 leading-relaxed">
+              Tendrás que volver a ingresar tus credenciales la próxima vez que quieras acceder a tus cursos.
+            </p>
+            
+            <div className="flex gap-3">
+              {/* Botón de Cancelar: Solo apaga el interruptor del modal */}
+              <button 
+                onClick={() => setShowModalLogOut(false)}
+                className="flex-1 py-3 px-4 rounded-xl font-bold text-slate-600 bg-slate-50 hover:bg-slate-100 transition-colors"
+              >
+                Cancelar
+              </button>
+              
+              {/* Botón de Confirmar: Ejecuta la función que nos teletransporta */}
+              <button 
+                onClick={handleLogout}
+                className="flex-1 py-3 px-4 rounded-xl font-bold text-white bg-rose-500 hover:bg-rose-600 shadow-md shadow-rose-200 transition-colors"
+              >
+                Sí, salir
+              </button>
+            </div>
+          </div>
+          
+        </div>
+      )}
     </div>
   );
 }
