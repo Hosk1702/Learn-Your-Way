@@ -1,11 +1,16 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {LogIn, Mail, Lock, Eye, EyeOff} from "lucide-react";
 
 export default function LoginPage() {
 
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
 
+    const handleLogin = (e:any) =>{
+        e.preventDefault();
+        navigate('/dashboard')
+    }
     return(
         <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 px-6 font-sans">
             
@@ -31,7 +36,7 @@ export default function LoginPage() {
             <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
 
                 <div className="bg-white py-8 px-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 rounded-[2rem] sm:px-10">
-                    <form className="space-y-6">
+                    <form className="space-y-6" onSubmit={handleLogin}>
                         <div>
                             {/* Campo del correo */}
                             <label className="block text-sm font-bold text-slate-700 mb-2">
