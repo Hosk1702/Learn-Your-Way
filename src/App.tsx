@@ -8,6 +8,10 @@ import DashboardLayout from './components/layout/DashboardLayout';
 import DashboardPage from './features/dashboard/DashboardPage';
 import CatalogPage from './features/dashboard/CatalogPage';
 import ClassroomPage from './features/dashboard/ClassroomPage';
+import ApplyTeacherPage from './features/auth/ApplyTeacherPage';
+import TeacherLandingPage from './features/landing/TeacgerLandingPage';
+import PricingPage from './features/landing/PriceLanding';
+import PublicCoursesPage from './features/landing/PublicCoursePage';
 
 function App() {
   return (
@@ -17,12 +21,16 @@ function App() {
         {/* Rutas Públicas (Con Header y Footer) */}
         <Route element={<PublicLayout />}>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/teachers" element={<TeacherLandingPage />} />
+          <Route path="/prices" element={<PricingPage />} />
+          <Route path="/courses" element={<PublicCoursesPage />} />
         </Route>
 
         {/* Rutas de Autenticación (Pantalla completa, sin Header/Footer)*/}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} /> 
         <Route path='/forgot-password' element={<ForgotPasswordPage />} />
+        <Route path='/apply-teacher' element={<ApplyTeacherPage />}/>
 
         {/* Rutas privadas / dashboards */}
         <Route element={<DashboardLayout />}>

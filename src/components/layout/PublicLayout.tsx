@@ -20,9 +20,9 @@ export default function PublicLayout() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
-          <a href="#cursos" className="hover:text-indigo-600 transition">Cursos</a>
-          <a href="#profesores" className="hover:text-indigo-600 transition">Para Profesores</a>
-          <a href="#precios" className="hover:text-indigo-600 transition">Precios</a>
+          <a href="/courses" className="hover:text-indigo-600 transition">Cursos</a>
+          <a href="/teachers" className="hover:text-indigo-600 transition">Para Profesores</a>
+          <a href="/prices" className="hover:text-indigo-600 transition">Precios</a>
         </nav>
 
         <div className="flex items-center gap-4">

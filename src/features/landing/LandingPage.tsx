@@ -133,9 +133,11 @@ export default function LandingPage() {
                 <CheckItem text="Importación inteligente desde plataformas legacy [cite: 932]" />
               </div>
 
-              <button className="w-full sm:w-auto px-10 py-5 bg-cyan-400 hover:bg-cyan-300 text-slate-950 rounded-full font-black transition-all shadow-lg shadow-cyan-400/20 text-lg">
+              <Link
+                to="/apply-teacher"
+              className="w-full sm:w-auto px-10 py-5 bg-cyan-400 hover:bg-cyan-300 text-slate-950 rounded-full font-black transition-all shadow-lg shadow-cyan-400/20 text-lg">
                 Solicitar Cuenta Docente
-              </button>
+              </Link>
             </div>
 
             {/* Simulación de Video/Interfaz */}
