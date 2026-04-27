@@ -12,6 +12,15 @@ import ApplyTeacherPage from './features/auth/ApplyTeacherPage';
 import TeacherLandingPage from './features/landing/TeacgerLandingPage';
 import PricingPage from './features/landing/PriceLanding';
 import PublicCoursesPage from './features/landing/PublicCoursePage';
+import UserProfilePage from './features/dashboard/UserProfileDashboard';
+import TeacherLayout from './components/layout/TeacherLayout';
+import TeacherDashboardPage from './features/dashboard/TeacherDashboard';
+import TeacherCoursePage from "./features/teacher/TeacherCoursesPage"
+import CourseStudioPage from './features/teacher/CouseStudioPage';
+import TeacherStudentsPage from './features/teacher/TeacherStudentPage';
+import CourseStudentsDetailPage from './features/teacher/CourseStudentDetailPage';
+import TeacherMessagePage from './features/teacher/TeacherMessagePage';
+
 
 function App() {
   return (
@@ -37,6 +46,19 @@ function App() {
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/catalog" element={<CatalogPage />} />
           <Route path='/classroom' element={<ClassroomPage />} />
+          <Route path='/profile' element={<UserProfilePage />} />
+        </Route>
+
+        <Route element={<TeacherLayout />}>
+          <Route path='/teacher/dashboard' element={<TeacherDashboardPage />} />
+          <Route path='/teacher/courses' element={<TeacherCoursePage />} />
+          <Route path='/teacher/studio' element={<CourseStudioPage />} />
+
+          <Route path="/teacher/students" element={<TeacherStudentsPage />} />
+          <Route path="/teacher/students/:courseId" element={<CourseStudentsDetailPage />} />
+          <Route path="/teacher/messages" element={<TeacherMessagePage />} />
+          
+          <Route path="/teacher/messages" element={<div className="p-8 text-slate-500 font-bold">Próximamente: Dudas Escaladas</div>} />
         </Route>
 
         

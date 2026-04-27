@@ -41,7 +41,7 @@ export default function LandingPage() {
         </p>
         
         <div className="flex flex-col sm:flex-row items-center gap-5">
-          <Link to="/catalog" className="w-full sm:w-auto px-10 py-5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full font-bold transition-all shadow-xl shadow-indigo-200 flex items-center justify-center gap-3 text-lg">
+          <Link to="/courses" className="w-full sm:w-auto px-10 py-5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full font-bold transition-all shadow-xl shadow-indigo-200 flex items-center justify-center gap-3 text-lg">
             Explorar Catálogo <Play className="w-4 h-4 fill-current" />
           </Link>
           <Link to="/register" className="w-full sm:w-auto px-10 py-5 bg-white text-slate-700 hover:bg-slate-50 border border-slate-200 rounded-full font-bold transition-all text-lg">
